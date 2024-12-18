@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <article class="pb-4">
+        <h2 class="font-bold">{{ post.title }}</h2>
+        {% if post.published_date %}
+            <time class="italic">Publié le {{ post.published_date }} par {{ post.author }}</time>
+            {% else %}
+            <p class="italic">En attente de publication par {{ post.author }}</p>
+        {% endif %}
+        <p>{{ post.text|linebreaksbr }}</p>
+    </article>
+{% endblock %}

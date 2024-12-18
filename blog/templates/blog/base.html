@@ -1,0 +1,28 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <title>mybookmate</title>
+</head>
+
+<body class="m-5">
+    <header class="bg-black">
+        <div>
+            <a href="{% url 'post_new' %}" class="top-menu">{% include './icons/file-earmark-plus.svg' %}</a>
+            <h1 class="text-6xl text-white"><a href="/">Hello</a></h1>
+        </div>
+    </header>
+
+    <main class="mt-4">
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+</body>
+
+</html>
