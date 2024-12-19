@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for post in posts %}
-        <article class="my-4 p-2 border border-slate-600">
+        <article class="my-4">
             <div class="flex justify-between">
                 <h2 class="font-bold"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
                 <time class="italic">Publié le {{ post.published_date }} par {{ post.author }}</time>

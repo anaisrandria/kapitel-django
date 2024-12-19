@@ -42,7 +42,16 @@ module.exports = {
 		// '../../**/*.py'
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				beige: "rgb(242, 239, 235)",
+			},
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+				hanken: ['Hanken Grotesk', 'sans-serif'],
+				lora: ['Lora', 'serif'],
+			},
+		},
 	},
 	plugins: [
 		/**
