@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Hello</h1>
-    {% for book in response %}
-        {{ book.volumeInfo }}
+    {% for book in data.items %}
+        {{ book }}
     {% endfor %}
 </body>
 </html>
