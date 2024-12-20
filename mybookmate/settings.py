@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'books.apps.BooksConfig',
+    'rest_framework',
     'tailwind',
     'theme',
 ]
 
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = 'theme',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,14 +1,20 @@
 from django.db import models
 from django.conf import settings
 from .utils import StatusLabel
-
-class Book(models.Model):
-    google_book_id = models.IntegerField()
+from django.contrib.auth.models import User
 
 class UserBook(models.Model):
-    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    book_id = models.ForeignKey(Book, related_name='book_id', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_id', on_delete=models.CASCADE)
+    google_book_id = models.IntegerField()
     status = models.IntegerField(choices=StatusLabel.choices(), default=StatusLabel.QUEUED)
+    comments = models.CharField(max_length=500, blank=True, null=True)
+    current_page = models.IntegerField(blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
 
     def get_book_status_label(self):
         return StatusLabel(self.status)
+    
+    def __str__(self):
+        return self.google_book_id
+        
