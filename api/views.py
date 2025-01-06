@@ -22,13 +22,14 @@ def book_list(request):
 
 @api_view(['GET']) #to define if it is a get request
 def get_books_by_user(request, user_id): #define endpoint function)
-    user_books = Book.objects.filter(user_id=user_id)  
-    serialized_books = BookSerializer(user_books, many=True)  # many=True car il y a plusieurs objets
+    books = Book.objects.filter(user_id=user_id)  
+    serialized_books = BookSerializer(books, many=True)  # many=True car il y a plusieurs objets
     return Response(serialized_books.data)
 
 @api_view(['POST'])
 def add_book(request):
-    serializer = BookSerializer(data=request.data)
+    data = request.data
+    serializer = BookSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
