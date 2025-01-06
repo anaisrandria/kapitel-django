@@ -21,11 +21,11 @@ def book_list(request):
     # return render(request, 'books/home.html', {'data': data})
 
 @api_view(['GET']) #to define if it is a get request
-def get_book(request): #define endpoint function)
-    return Response(UserBookSerializer({
-        'google_book_id': 1,
-        'status': 'Queued',
-        }).data)
+def get_books_by_user(request, user_id): #define endpoint function)
+    user_books = UserBook.objects.filter(user_id=user_id)  
+    serialized_books = UserBookSerializer(user_books, many=True)  # many=True car il y a plusieurs objets
+    
+    return Response(serialized_books.data)
 
 @api_view(['POST'])
 def add_book(request):
