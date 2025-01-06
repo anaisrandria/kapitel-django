@@ -7,8 +7,8 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import UserBook
-from .serializer import UserBookSerializer
+from .models import Book
+from .serializer import BookSerializer
 
 #get books from google books api
 def book_list(request):
@@ -22,14 +22,13 @@ def book_list(request):
 
 @api_view(['GET']) #to define if it is a get request
 def get_books_by_user(request, user_id): #define endpoint function)
-    user_books = UserBook.objects.filter(user_id=user_id)  
-    serialized_books = UserBookSerializer(user_books, many=True)  # many=True car il y a plusieurs objets
-    
+    user_books = Book.objects.filter(user_id=user_id)  
+    serialized_books = BookSerializer(user_books, many=True)  # many=True car il y a plusieurs objets
     return Response(serialized_books.data)
 
 @api_view(['POST'])
 def add_book(request):
-    serializer = UserBookSerializer(data=request.data)
+    serializer = BookSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)

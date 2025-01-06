@@ -3,7 +3,7 @@ from django.conf import settings
 from .utils import StatusLabel
 from django.contrib.auth.models import User
 
-class UserBook(models.Model):
+class Book(models.Model):
     user = models.ForeignKey(User, related_name='user_id', on_delete=models.CASCADE)
     google_book_id = models.IntegerField()
     status = models.IntegerField(choices=StatusLabel.choices(), default=StatusLabel.QUEUED)
