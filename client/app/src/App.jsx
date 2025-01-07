@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Login from "./components/Login";
 // import Register from "./components/Register";
 import Home from "./components/Home";
+import Book from "./components/Book";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -19,8 +20,8 @@ function App() {
             <Route path="/" element={<Home />} />
             {/* <Route path="/login" />
             <Route path="/register" />
-            <Route path="/profile/:id" />
-            <Route path="/book/:id" /> */}
+            <Route path="/profile/:id" /> */}
+            <Route path="/book/:id" element={<Book />} /> 
           </Routes>
           <Footer />
         </div>
