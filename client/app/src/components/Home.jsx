@@ -28,13 +28,16 @@ function Home() {
             </h1>
             <div>
                 {books.map((book) => (
-                    <div className="mb-8">
-                        {" "}
+                    <div className="mb-8" key={book.id}>
+                        {/* {" "} */}
+                        <p>Id: {book.id}</p>
                         <p>Google Book Id: {book.google_book_id}</p>
                         <p>Title: {book.title}</p>
                         <p>Release year: {book.release_year}</p>
                         <p>Status: {book.status}</p>
                         <p>Comments: {book.comments}</p>
+                        <p>User_id: {book.user}</p>
+                        <p>Username: {book.user}</p>
                     </div>
                 ))}
             </div>
