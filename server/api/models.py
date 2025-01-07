@@ -4,7 +4,7 @@ from .utils import StatusLabel
 from django.contrib.auth.models import User
 
 class Book(models.Model):
-    user = models.ForeignKey(User, related_name='user_id', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     google_book_id = models.IntegerField()
     title = models.CharField(max_length=280)
     authors = models.CharField(max_length=280)
