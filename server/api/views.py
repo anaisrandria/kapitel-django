@@ -11,18 +11,18 @@ from .models import Book
 from .serializer import BookSerializer
 
 #get books from google books api
-def get_books_details(request):
-    api_key = os.getenv('API_KEY')
-    url = f'https://books.googleapis.com/books/v1/volumes?q=$changer&maxResults=40&langRestrict=fr&printType=books&key={api_key}'
-    response = requests.get(url)
-    data = response.json()
-    print('🧀 Data is:', data)
-    return JsonResponse(data)
+# def get_books(request):
+#     api_key = os.getenv('API_KEY')
+#     url = f'https://books.googleapis.com/books/v1/volumes?q=$changer&maxResults=40&langRestrict=fr&printType=books&key={api_key}'
+#     response = requests.get(url)
+#     data = response.json()
+#     print('🧀 Data is:', data)
+#     return JsonResponse(data)
     # return render(request, 'books/home.html', {'data': data})
 
 @api_view(['GET']) #to define if it is a get request
-def get_books_by_user(request, user_id): #define endpoint function)
-    books = Book.objects.filter(user_id=user_id)  
+def get_books_by_user(request): #define endpoint function)
+    books = Book.objects.all()  
     serialized_books = BookSerializer(books, many=True)  # many=True car il y a plusieurs objets
     return Response(serialized_books.data)
 
