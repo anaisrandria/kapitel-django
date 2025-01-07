@@ -4,11 +4,29 @@ import { useState  } from "react";
 function Header() {
 
     const [input, setInput] = useState('')
-
+    
     const handleInput = (e) => {
+        let timer = 0;
+        
         setInput(e.target.value);
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            if (input !== "") {
+                fetchGoogleBooksApi();
+            }
+        }, 3000);
+        
         console.log("🐯 set input is:", input)
     };
+
+    const fetchGoogleBooksApi = async() => {
+        const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
+        const response = await fetch(api_url)
+        const data = await response.json()
+
+        console.log("🐣 data is:", data)
+    }
+
 
     return (
         <div className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
