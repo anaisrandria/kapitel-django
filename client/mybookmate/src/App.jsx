@@ -11,17 +11,19 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-center items-start gap-4 ">
+    <div className="relative w-full h-screen flex flex-col items-start gap-4">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/login" />
-          <Route path="/register" />
-          <Route path="/profile/:id" />
-          <Route path="/book/:id" /> */}
-        </Routes>
-        <Footer />
+        <div className="flex flex-col w-full h-screen items-start justify-between">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/login" />
+            <Route path="/register" />
+            <Route path="/profile/:id" />
+            <Route path="/book/:id" /> */}
+          </Routes>
+          <Footer />
+        </div>
       </BrowserRouter>
     </div>
   )

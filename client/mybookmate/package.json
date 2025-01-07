@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tailwind": "npx tailwindcss -i ./src/stylesheets/input.css -o ./src/stylesheets/output.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/stylesheets/index.css -o ./src/stylesheets/output.css --watch"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

@@ -7,6 +7,7 @@
 @tailwind utilities;
 
 :root {
+  margin: 0;
   font-family: Hanken Grotesk, Lora, Poppins;
   line-height: 1.5;
 
