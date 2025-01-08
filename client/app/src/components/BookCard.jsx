@@ -1,4 +1,4 @@
-function BookCard() {
+function BookCard({ books, setBooks }) {
 
     return (
         <>

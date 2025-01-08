@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SearchResults({ book, setBooks }) {
 
     const addBook = async() => {
@@ -36,6 +38,7 @@ function SearchResults({ book, setBooks }) {
 
     return (
         <>
+        <Link to="/book/:id">
             <div className="flex py-2 border-x-0 border-t-0 border-y border-slate-300 gap-2">
                 <img src={book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"} alt="thumbnail" className="w-12 max-h-13" />
                 <div id="book-details">
@@ -44,6 +47,7 @@ function SearchResults({ book, setBooks }) {
                     <button onClick={addBook} className="pt-2 hover:text-amber-700">Ajouter</button>
                 </div>
             </div>
+        </Link>
         </>
     )
 }

@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import StatusReading from "./StatusReading";
+import StatusQueued from "./StatusQueued";
+import StatusCompleted from "./StatusCompleted";
+import StatusPaused from "./StatusPaused";
+import StatusArchived from "./StatusArchived";
 
-
-function Home({ books, setBooks}) {
+function Home({ books, setBooks }) {
 
     // const [books, setBooks] = useState([]);
 
@@ -26,6 +30,8 @@ function Home({ books, setBooks}) {
             <h1 className="text-4xl font-lora mb-4">
                 Hello Anaïs
             </h1>
+            <StatusReading />
+            <StatusQueued />
             <div>
                 {books.map((book) => (
                     <div className="mb-8 text-sm" key={book.id}>
@@ -40,6 +46,9 @@ function Home({ books, setBooks}) {
                     </div>
                 ))}
             </div>
+            <StatusCompleted />
+            <StatusPaused />
+            <StatusArchived />
 
         </div>
     )
