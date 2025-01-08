@@ -12,7 +12,7 @@ export default {
 				lora: ["Lora", "serif"],
 			},
 			fontSize: {
-				s: ["13px", "20px"],
+				s: ["13px", "16px"],
 			},
 		},
 	},
