@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SearchResults from './SearchResults';
 
 function Header({ results, handleInput }) {
 
@@ -14,9 +15,9 @@ function Header({ results, handleInput }) {
                 <div id="search-container" className="relative w-full border-x-0 border-t-0 border-y border-slate-300">
                     <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit py-1 text-xs text-slate-700 focus:outline-none"></input>
                     {/* Search results container */}
-                    <div className="absolute mt-1 w-full p-2 bg-white shadow-lg rounded-bl rounded-br max-h-36 overflow-y-auto text-sm">
+                    <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[50vh] overflow-y-auto text-xs">
                         {results.items && results.items.map((book, id) => {
-                            return <div key={id}>{book.volumeInfo.title}</div>
+                            return <SearchResults book={book} key={id} />
                         })}  
                     </div>
                 </div>
