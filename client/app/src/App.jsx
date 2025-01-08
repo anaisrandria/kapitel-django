@@ -29,7 +29,7 @@ function App() {
         if (input) {
             fetchGoogleBooksApi();
         } 
-      }, 3000);
+      }, 1500);
 
       return () => clearTimeout(timer)
       

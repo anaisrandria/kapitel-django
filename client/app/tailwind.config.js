@@ -11,6 +11,9 @@ export default {
 				hanken: ["Hanken Grotesk", "sans-serif"],
 				lora: ["Lora", "serif"],
 			},
+			fontSize: {
+				s: ["13px", "20px"],
+			},
 		},
 	},
 	plugins: [],

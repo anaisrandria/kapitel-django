@@ -15,7 +15,7 @@ function Header({ results, handleInput }) {
                 <div id="search-container" className="relative w-full border-x-0 border-t-0 border-y border-slate-300">
                     <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit py-1 text-xs text-slate-700 focus:outline-none"></input>
                     {/* Search results container */}
-                    <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[50vh] overflow-y-auto text-xs">
+                    <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
                         {results.items && results.items.map((book, id) => {
                             return <SearchResults book={book} key={id} />
                         })}  
