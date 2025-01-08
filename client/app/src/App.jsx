@@ -7,10 +7,12 @@ import Home from "./components/Home";
 import Book from "./components/Book";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SearchResults from './components/SearchResults';
 
 function App() {
     const [input, setInput] = useState('')
     const [results, setResults] = useState([])
+    const [books, setBooks] = useState([])
 
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
@@ -44,10 +46,10 @@ function App() {
   return (
     <div className="relative w-full h-screen flex flex-col items-start gap-4">
       <BrowserRouter>
-        <Header results={results} handleInput={handleInput} />
+        <Header results={results} handleInput={handleInput} setBooks={setBooks} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home books={books} setBooks={setBooks} />} />
             {/* <Route path="/login" />
             <Route path="/register" />
             <Route path="/profile/:id" /> */}

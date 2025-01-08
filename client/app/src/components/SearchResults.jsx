@@ -1,4 +1,4 @@
-function SearchResults({ book }) {
+function SearchResults({ book, setBooks }) {
 
     const addBook = async() => {
         console.log("🍎", book)
@@ -26,6 +26,8 @@ function SearchResults({ book }) {
             const data = await response.json()
             console.log("✅ data is:", data)
 
+            setBooks((prev) => [...prev, data])
+
         } catch (err) {
             console.log(err);
         }
@@ -38,7 +40,7 @@ function SearchResults({ book }) {
                 <img src={book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"} alt="thumbnail" className="w-12 max-h-13" />
                 <div id="book-details">
                     <p className="text-s">{book.volumeInfo.title}</p>
-                    <p className="text-xs">{book.volumeInfo.authors && book.volumeInfo.authors.join(', ')} ({book.volumeInfo.publishedDate.slice(0, 4)})</p>
+                    <p className="text-xs">{book.volumeInfo.authors && book.volumeInfo.authors.join(', ')} ({book.volumeInfo.publishedDate && book.volumeInfo.publishedDate.slice(0, 4)})</p>
                     <button onClick={addBook} className="pt-2 hover:text-amber-700">Ajouter</button>
                 </div>
             </div>

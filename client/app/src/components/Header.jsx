@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchResults from './SearchResults';
 
-function Header({ results, handleInput }) {
+function Header({ results, handleInput, setBooks }) {
 
     return (
         <div className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
@@ -17,7 +17,7 @@ function Header({ results, handleInput }) {
                     {/* Search results container */}
                     <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
                         {results.items && results.items.map((book, id) => {
-                            return <SearchResults book={book} key={id} />
+                            return <SearchResults book={book} key={id} setBooks={setBooks} />
                         })}  
                     </div>
                 </div>
