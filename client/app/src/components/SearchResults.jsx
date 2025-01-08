@@ -12,8 +12,8 @@ function SearchResults({ book }) {
                 body: JSON.stringify({
                     google_book_id: book.id,
                     title: book.volumeInfo.title,
-                    authors: book.volumeInfo.authors,
-                    release_year: book.volumeInfo.publishedDate,
+                    authors: book.volumeInfo.authors.join(', '),
+                    release_year: book.volumeInfo.publishedDate.slice(0, 4),
                     status: 5,
                     comments: null,
                     current_page: null,

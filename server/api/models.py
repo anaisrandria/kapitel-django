@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 
 class Book(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    google_book_id = models.IntegerField()
-    title = models.CharField(max_length=280)
-    authors = models.CharField(max_length=280)
+    google_book_id = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    authors = models.CharField(max_length=500)
     release_year = models.IntegerField()
     status = models.IntegerField(choices=StatusLabel.choices(), default=StatusLabel.QUEUED)
     comments = models.CharField(max_length=500, blank=True, null=True)
