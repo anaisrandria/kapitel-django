@@ -9,12 +9,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [input, setInput] = useState('')
 
   return (
     <div className="relative w-full h-screen flex flex-col items-start gap-4">
       <BrowserRouter>
-        <Header />
+        <Header setInput={setInput} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
             <Route path="/" element={<Home />} />

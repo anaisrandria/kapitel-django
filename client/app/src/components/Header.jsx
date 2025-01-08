@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Header() {
+function Header({ setInput }) {
 
-    const [input, setInput] = useState('')
+    // const [input, setInput] = useState('')
 
     const fetchGoogleBooksApi = async() => {
-        const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
+        const api_url = `https://books.googleapis.com/books/v1/volumes?q=${setInput}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
         const response = await fetch(api_url)
         const data = await response.json()
 
@@ -14,17 +14,17 @@ function Header() {
     }
 
     const handleInput = (e) => {
-        let timer = 0;
-        
         setInput(e.target.value);
+        
+        let timer = 0;
         clearTimeout(timer);
         timer = setTimeout(() => {
-            if (input !== "") {
+            if (setInput !== "") {
                 fetchGoogleBooksApi();
             }
         }, 3000);
         
-        console.log("🐯 set input is:", input)
+        console.log("🐯 set input is:", e.target.value)
     };
 
     return (
@@ -35,7 +35,7 @@ function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                     </svg>
                 </Link>
-                <input type="text" placeholder="Rechercher un livre..." name="search-bar" onInput={handleInput} className="bg-inherit py-1 w-full text-xs text-slate-700 border-x-0 border-t-0 border-y border-slate-300 focus:outline-none"></input>
+                <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit py-1 w-full text-xs text-slate-700 border-x-0 border-t-0 border-y border-slate-300 focus:outline-none"></input>
             </div>
             <div id="menu" className="flex justify-end gap-4 w-full text-sm">
                 <Link to="#"><p>Fil d'actualité</p></Link>
