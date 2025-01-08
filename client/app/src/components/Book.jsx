@@ -4,7 +4,7 @@ function Book() {
 
     return (
         <div className="flex gap-6">
-            <img id="big-cover" src="/public/missingbook.jpg" alt="cover" className="w-1/3"/>
+            <img id="big-cover" src="/missingbook.jpg" alt="cover" className="w-1/3"/>
             <div id="book-description" className="flex flex-col gap-3">
                 <h1 id="title" className="text-3xl font-lora">Title</h1>
                 <p id="author" className="text-xl">Auteur</p>
