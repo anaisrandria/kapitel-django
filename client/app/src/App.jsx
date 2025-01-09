@@ -14,6 +14,7 @@ function App() {
     const [results, setResults] = useState([])
     const [books, setBooks] = useState([])
     const [clickedBook, setClickedBook] = useState("")
+    const [newComment, setNewComment] = useState("")
 
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
@@ -56,7 +57,7 @@ function App() {
             {/* <Route path="/login" />
             <Route path="/register" />
             <Route path="/profile/:id" /> */}
-            <Route path="/book/:id" element={<Book />} /> 
+            <Route path="/book/:google_book_id" element={<Book />} /> 
           </Routes>
           <Footer />
         </div>

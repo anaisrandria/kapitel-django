@@ -1,6 +1,23 @@
-function Book() {
+import { useEffect } from "react";
 
-    
+function Book({ books, setBooks, id }) {
+
+    const getBookDetails = async (pk) => {
+        try {
+            const response = await fetch (`http://127.0.0.1:8000/api/books/${pk}`);
+            const bookData = await response.json()
+
+            setBooks(bookData)
+            console.log(books)
+
+        } catch (err) {
+            console.log(err)
+        };
+    }
+
+    useEffect(() => {
+        getBookDetails("bghBEAAAQBAJ")
+    }, [])
 
     return (
         <div className="flex gap-6">
