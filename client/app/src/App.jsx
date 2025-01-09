@@ -10,9 +10,10 @@ import Footer from "./components/Footer";
 import SearchResults from './components/SearchResults';
 
 function App() {
-    const [input, setInput] = useState('')
+    const [input, setInput] = useState("")
     const [results, setResults] = useState([])
     const [books, setBooks] = useState([])
+    const [clickedBook, setClickedBook] = useState("")
 
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
@@ -44,7 +45,9 @@ function App() {
     };
 
   return (
-    <div className="relative w-full h-screen flex flex-col items-start gap-4">
+    // <div className="relative w-full h-screen flex flex-col items-start gap-4">
+    <div className="relative w-full flex flex-col items-start gap-4">
+
       <BrowserRouter>
         <Header results={results} handleInput={handleInput} setBooks={setBooks} />
         <div className="flex flex-col w-full h-screen items-start justify-between">

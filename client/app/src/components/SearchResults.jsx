@@ -21,7 +21,8 @@ function SearchResults({ book, setBooks }) {
                     current_page: null,
                     start_date: null,
                     end_date: null,
-                    user: 1
+                    user: 1,
+                    image_link: book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"
                 })
             });
 
@@ -40,7 +41,7 @@ function SearchResults({ book, setBooks }) {
         <>
         
             <div className="flex py-2 border-x-0 border-t-0 border-y border-gray-200 gap-2">
-                <Link to="/book/:id"><img src={book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"} alt="thumbnail" className="w-12 max-h-13" /></Link>
+                <Link to="/book/:id"><img src={book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"} alt="thumbnail" className="max-w-12 max-h-13" /></Link>
                 <div id="book-details">
                     <Link to="/book/:id">
                     <p className="text-s">{book.volumeInfo.title}</p>

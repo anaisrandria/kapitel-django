@@ -14,6 +14,7 @@ class Book(models.Model):
     current_page = models.IntegerField(blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
+    image_link = models.CharField(max_length=500)
 
     def get_book_status_label(self):
         return StatusLabel(self.status)
