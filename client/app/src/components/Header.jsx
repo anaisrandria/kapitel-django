@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchResults from './SearchResults';
 
-function Header({ results, handleInput, setBooks }) {
+function Header({ results, handleInput, setBooks, setClickedBook }) {
 
     return (
         <div className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
@@ -17,13 +17,13 @@ function Header({ results, handleInput, setBooks }) {
                     {/* Search results container */}
                     <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
                         {results.items && results.items.map((book, id) => {
-                            return <SearchResults book={book} key={id} setBooks={setBooks} />
+                            return <SearchResults book={book} key={id} setBooks={setBooks} setClickedBook={setClickedBook} />
                         })}  
                     </div>
                 </div>
             </div>
             <div id="menu" className="flex justify-end gap-4 w-full text-sm">
-                <Link to="#"><p>Fil d'actualité</p></Link>
+                <Link to="http://127.0.0.1:8000/blog/"><p>Fil d'actualité</p></Link>
                 <Link to="#"><p>Ma bibliothèque</p></Link>
                 <Link to="#"><p>Profil</p></Link>
             </div>

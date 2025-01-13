@@ -7,13 +7,12 @@ import Home from "./components/Home";
 import Book from "./components/Book";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SearchResults from './components/SearchResults';
 
 function App() {
-    const [input, setInput] = useState("")
-    const [results, setResults] = useState([])
-    const [books, setBooks] = useState([])
-    const [clickedBook, setClickedBook] = useState("")
+    const [input, setInput] = useState("") // Input value
+    const [results, setResults] = useState([]) // Results from search bar
+    const [books, setBooks] = useState([]) // Books in local database
+    const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components)
     const [newComment, setNewComment] = useState("")
 
     const fetchGoogleBooksApi = async() => {
@@ -23,8 +22,6 @@ function App() {
 
       console.log("🐣 data is:", data)
       setResults(data || [])
-      console.log("🐙 input is:", input)
-      console.log(api_url)
     }
 
     useEffect(() => {
@@ -33,11 +30,11 @@ function App() {
         if (input) {
             fetchGoogleBooksApi();
         } 
-      }, 1500);
+      }, 500);
 
+      console.log("🟢 results is:", results)
       return () => clearTimeout(timer)
       
-      console.log("🟢 results is:", results)
     }, [input]);
 
     const handleInput = (e) => {
@@ -45,19 +42,21 @@ function App() {
         console.log("🐯 set input is:", e.target.value) 
     };
 
+    // console.log("🦄 clickedBook is:", clickedBook)
+
   return (
     // <div className="relative w-full h-screen flex flex-col items-start gap-4">
     <div className="relative w-full flex flex-col items-start gap-4">
 
       <BrowserRouter>
-        <Header results={results} handleInput={handleInput} setBooks={setBooks} />
+        <Header results={results} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
-            <Route path="/" element={<Home books={books} setBooks={setBooks} />} />
+            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} />} />
+            <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} />} /> 
             {/* <Route path="/login" />
             <Route path="/register" />
             <Route path="/profile/:id" /> */}
-            <Route path="/book/:google_book_id" element={<Book />} /> 
           </Routes>
           <Footer />
         </div>

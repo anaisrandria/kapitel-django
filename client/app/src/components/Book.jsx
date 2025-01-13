@@ -1,35 +1,41 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function Book({ books, setBooks, id }) {
+function Book({ books, setBooks, setClickedBook, clickedBook }) {
+    
+    let params = useParams()
 
-    const getBookDetails = async (pk) => {
+    const getBookDetails = async () => {
         try {
-            const response = await fetch (`http://127.0.0.1:8000/api/books/${pk}`);
+            // const response = await fetch (`http://127.0.0.1:8000/api/books/${params.id}`);
+            const response = await fetch (`https://www.googleapis.com/books/v1/volumes/${params.id}?key=${import.meta.env.VITE_API_KEY}`);
             const bookData = await response.json()
-
-            setBooks(bookData)
-            console.log(books)
-
+            
+            setClickedBook(bookData)
+            console.log("bookData is:", bookData)
+            
         } catch (err) {
             console.log(err)
         };
+        
     }
 
     useEffect(() => {
-        getBookDetails("bghBEAAAQBAJ")
-    }, [])
+        getBookDetails()
+    }, []);
 
     return (
         <div className="flex gap-6">
-            <img id="big-cover" src="/missingbook.jpg" alt="cover" className="w-1/3"/>
-            <div id="book-description" className="flex flex-col gap-3">
-                <h1 id="title" className="text-3xl font-lora">Title</h1>
-                <p id="author" className="text-xl">Auteur</p>
-                <p id="summary" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
+            {clickedBook.volumeInfo && 
+                   <>
+                <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.thumbnail || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
+                <div id="book-description" className="flex flex-col gap-3">
+                    <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate.slice(0,4)})</h1>
+                    <p id="author" className="text-xl">{clickedBook.volumeInfo.authors}</p>
+                    <p id="summary" >{clickedBook.volumeInfo.description}</p>
+                </div>
+                   </> 
+            }
         </div>
         
     )
