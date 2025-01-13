@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Book({ books, setBooks, setClickedBook, clickedBook }) {
     
@@ -28,7 +28,7 @@ function Book({ books, setBooks, setClickedBook, clickedBook }) {
         <div className="flex gap-6">
             {clickedBook.volumeInfo && 
                    <>
-                <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.thumbnail || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
+                    <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
                 <div id="book-description" className="flex flex-col gap-3">
                     <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate.slice(0,4)})</h1>
                     <p id="author" className="text-xl">{clickedBook.volumeInfo.authors}</p>
