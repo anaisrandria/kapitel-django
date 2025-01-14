@@ -44,7 +44,7 @@ function App() {
 
     // console.log("🦄 clickedBook is:", clickedBook)
 
-    const addBook = async(book) => {
+    const addBook = async(book, status) => {
         console.log("🍎", book)
 
         try {
@@ -58,7 +58,7 @@ function App() {
                     title: book.volumeInfo.title,
                     authors: book.volumeInfo.authors.join(', '),
                     release_year: book.volumeInfo.publishedDate.slice(0, 4),
-                    status: 5,
+                    status: status,
                     comments: null,
                     current_page: null,
                     start_date: null,

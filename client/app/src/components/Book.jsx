@@ -37,20 +37,20 @@ function Book({ books, setBooks, setClickedBook, clickedBook, addBook }) {
         <div className="flex gap-6">
             {clickedBook.volumeInfo && 
                 <>
-                <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
+                <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || clickedBook.volumeInfo.imageLinks?.tumbnail || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
                 <div id="book-description" className="flex flex-col gap-2 items-start">
-                    <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate.slice(0,4)})</h1>
-                    <p id="author" className="text-xl">{clickedBook.volumeInfo.authors.join(', ')}</p>
-                    <button type="button" onClick={() => addBook(clickedBook)} className="px-3 py-2 my-2 rounded-md border bg-amber-700 text-white text-s">Ajouter à ma bibliothèque</button>
-                    {/* <div className="flex flex-col px-3 py-2 my-2 rounded-md border bg-white *:text-s"> */}
-                    <ul role="button" tabIndex="0" aria-expende="true">
-                        <li><button>En cours</button></li>
-                        <li><button>À lire</button></li>
-                        <li><button>Terminé</button></li>
-                        <li><button>En pause</button></li>
-                        <li><button>Archivé</button></li>
-                    </ul>
-                    {/* </div> */}
+                    <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate?.slice(0,4)})</h1>
+                    <p id="author" className="text-xl">{clickedBook.volumeInfo.authors?.join(', ')}</p>
+                    <div id="dropdown" className="relative inline-block my-2 group">
+                        <button id="dropbtn" className="flex flex-col px-3 py-2 rounded-md border bg-amber-700 text-white text-s group-hover:bg-amber-800">Ajouter à ma bibliothèque</button>
+                        <div id="dropdown-content" className="hidden absolute z-10 bg-white p-3 text-sm w-full shadow-lg group-hover:block">
+                            <p onClick={() => addBook(clickedBook, 1)} className="block cursor-pointer hover:bg-gray-100">En cours</p>
+                            <p onClick={() => addBook(clickedBook, 2)} className="block cursor-pointer hover:bg-gray-100">À lire</p>
+                            <p onClick={() => addBook(clickedBook, 3)} className="block cursor-pointer hover:bg-gray-100">Terminé</p>
+                            <p onClick={() => addBook(clickedBook, 4)} className="block cursor-pointer hover:bg-gray-100">En pause</p>
+                            <p onClick={() => addBook(clickedBook, 5)} className="block cursor-pointer hover:bg-gray-100">Archivé</p>
+                        </div>
+                    </div>
                     <p id="summary" className="">{clickedBook.volumeInfo.description}</p>
                 </div>
                 </> 
