@@ -44,16 +44,51 @@ function App() {
 
     // console.log("🦄 clickedBook is:", clickedBook)
 
+    const addBook = async(book) => {
+        console.log("🍎", book)
+
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/books/add/", {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json",
+                },
+                body: JSON.stringify({
+                    google_book_id: book.id,
+                    title: book.volumeInfo.title,
+                    authors: book.volumeInfo.authors.join(', '),
+                    release_year: book.volumeInfo.publishedDate.slice(0, 4),
+                    status: 2,
+                    comments: null,
+                    current_page: null,
+                    start_date: null,
+                    end_date: null,
+                    user: 1,
+                    image_link: book.volumeInfo.imageLinks?.thumbnail || "missingbook.jpg"
+                })
+            });
+
+            const data = await response.json()
+            console.log("✅ data is:", data)
+
+            setBooks((prev) => [...prev, data])
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
+
   return (
     // <div className="relative w-full h-screen flex flex-col items-start gap-4">
     <div className="relative w-full flex flex-col items-start gap-4">
 
       <BrowserRouter>
-        <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} />
+        <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
             <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} />} />
-            <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} />} /> 
+            <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} addBook={addBook} />} /> 
             {/* <Route path="/login" />
             <Route path="/register" />
             <Route path="/profile/:id" /> */}

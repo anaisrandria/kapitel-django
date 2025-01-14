@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-function Book({ books, setBooks, setClickedBook, clickedBook }) {
+function Book({ books, setBooks, setClickedBook, clickedBook, addBook }) {
     
     let params = useParams()
 
@@ -29,10 +29,11 @@ function Book({ books, setBooks, setClickedBook, clickedBook }) {
             {clickedBook.volumeInfo && 
                 <>
                 <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
-                <div id="book-description" className="flex flex-col gap-3">
+                <div id="book-description" className="flex flex-col gap-2 items-start">
                     <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate.slice(0,4)})</h1>
-                    <p id="author" className="text-xl">{clickedBook.volumeInfo.authors}</p>
-                    <p id="summary" >{clickedBook.volumeInfo.description}</p>
+                    <p id="author" className="text-xl">{clickedBook.volumeInfo.authors.join(', ')}</p>
+                    <button type="button" onClick={() => addBook(clickedBook)} className="px-3 py-2 my-2 rounded-md border bg-amber-700 text-white text-s">Ajouter à ma bibliothèque</button>
+                    <p id="summary" className="">{clickedBook.volumeInfo.description}</p>
                 </div>
                 </> 
             }
