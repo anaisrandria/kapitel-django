@@ -58,7 +58,7 @@ function App() {
                     title: book.volumeInfo.title,
                     authors: book.volumeInfo.authors.join(', '),
                     release_year: book.volumeInfo.publishedDate.slice(0, 4),
-                    status: 2,
+                    status: 5,
                     comments: null,
                     current_page: null,
                     start_date: null,

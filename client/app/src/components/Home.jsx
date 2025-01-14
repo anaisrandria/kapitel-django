@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import StatusReading from "./StatusReading";
-import StatusQueued from "./StatusQueued";
-import StatusCompleted from "./StatusCompleted";
-import StatusPaused from "./StatusPaused";
-import StatusArchived from "./StatusArchived";
+import BooksList from "./BooksList";
 
 function Home({ books, setBooks, setClickedBook }) {
     
@@ -38,11 +34,11 @@ function Home({ books, setBooks, setClickedBook }) {
                 </div>
                 </>
             }
-            <StatusReading books={books} setBooks={setBooks} />
-            <StatusQueued books={books} setBooks={setBooks} setClickedBook={setClickedBook} />
-            <StatusCompleted books={books} setBooks={setBooks} />
-            <StatusPaused books={books} setBooks={setBooks} />
-            <StatusArchived books={books} setBooks={setBooks} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={1} title={"Mes lectures en cours"} subtitle={"Les livres que je suis en train de lire."} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={2} title={"Ma liste de lecture"} subtitle={"Les livres que j'ai envie de lire."} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={3} title={"Mes lectures terminées"} subtitle={"Les livres que j'ai fini de lire."} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={4} title={"Mes lectures en pause"} subtitle={"Les livres à reprendre plus tard."} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que je n'ai pas envie de terminer."} />
         </div>
     )
 }
