@@ -49,7 +49,7 @@ function App() {
     <div className="relative w-full flex flex-col items-start gap-4">
 
       <BrowserRouter>
-        <Header results={results} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} />
+        <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
             <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} />} />

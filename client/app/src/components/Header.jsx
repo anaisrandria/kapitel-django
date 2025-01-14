@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchResults from './SearchResults';
 
-function Header({ results, handleInput, setBooks, setClickedBook }) {
+function Header({ results, input, handleInput, setBooks, setClickedBook }) {
 
     return (
         <div className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
@@ -15,11 +15,13 @@ function Header({ results, handleInput, setBooks, setClickedBook }) {
                 <div id="search-container" className="relative w-full border-x-0 border-t-0 border-y border-slate-300">
                     <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit w-full py-1 text-xs text-slate-700 focus:outline-none"></input>
                     {/* Search results container */}
-                    <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
-                        {results.items && results.items.map((book, id) => {
-                            return <SearchResults book={book} key={id} setBooks={setBooks} setClickedBook={setClickedBook} />
-                        })}  
-                    </div>
+                    {input && 
+                        <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
+                            {results.items && results.items.map((book, id) => {
+                                return <SearchResults book={book} key={id} setBooks={setBooks} setClickedBook={setClickedBook} />
+                            })}  
+                        </div>
+                    }
                 </div>
             </div>
             <div id="menu" className="flex justify-end gap-4 w-full text-sm">

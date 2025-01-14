@@ -27,14 +27,14 @@ function Book({ books, setBooks, setClickedBook, clickedBook }) {
     return (
         <div className="flex gap-6">
             {clickedBook.volumeInfo && 
-                   <>
-                    <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
+                <>
+                <img id="big-cover" src={clickedBook.volumeInfo.imageLinks?.large || "/missingbook.jpg"} alt="cover" className="w-1/3"/>
                 <div id="book-description" className="flex flex-col gap-3">
                     <h1 id="title" className="text-3xl font-lora">{clickedBook.volumeInfo.title} ({clickedBook.volumeInfo.publishedDate.slice(0,4)})</h1>
                     <p id="author" className="text-xl">{clickedBook.volumeInfo.authors}</p>
                     <p id="summary" >{clickedBook.volumeInfo.description}</p>
                 </div>
-                   </> 
+                </> 
             }
         </div>
         

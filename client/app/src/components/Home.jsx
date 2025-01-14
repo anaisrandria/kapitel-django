@@ -28,12 +28,21 @@ function Home({ books, setBooks, setClickedBook }) {
             <h1 className="text-4xl font-lora mb-4">
                 Hello Anaïs
             </h1>
+            {books.length == 0 && 
+                <>
+                <div className="flex flex-col items-center p-6">
+                    <div className="text-3xl font-lora text-center py-4 w-3/5">
+                    Ta bibliothèque est vide ! Commence par explorer la librairie et ajoute des livres à ta liste de lecture.
+                    </div>
+                    <button type="button" className="px-3 py-3 my-1 rounded-md border bg-amber-700 text-white text-s">Explorer les livres</button>
+                </div>
+                </>
+            }
             <StatusReading books={books} setBooks={setBooks} />
             <StatusQueued books={books} setBooks={setBooks} setClickedBook={setClickedBook} />
             <StatusCompleted books={books} setBooks={setBooks} />
             <StatusPaused books={books} setBooks={setBooks} />
             <StatusArchived books={books} setBooks={setBooks} />
-
         </div>
     )
 }
