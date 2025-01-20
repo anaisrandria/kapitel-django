@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Book(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    google_book_id = models.CharField(max_length=255)
+    google_book_id = models.CharField(max_length=255, unique=True)
     title = models.CharField(max_length=255)
     authors = models.CharField(max_length=500)
     release_year = models.IntegerField()

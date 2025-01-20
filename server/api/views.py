@@ -45,7 +45,7 @@ def book_detail(request, pk):
     if request.method == 'DELETE':
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    if request.method == 'PUT':
+    elif request.method == 'PUT':
         data = request.data
         serializer = BookSerializer(book, data=data)
         if serializer.is_valid():
