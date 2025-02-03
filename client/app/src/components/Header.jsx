@@ -16,7 +16,7 @@ function Header({ results, input, handleInput, setBooks, setClickedBook, addBook
                         </svg>
                     </Link>
                     <div id="search-container" className="relative w-full md:w-2/3 border-x-0 border-t-0 border-y border-slate-300">
-                        <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit w-full py-1 text-xs text-slate-700 focus:outline-none"></input>
+                        <input type="search" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit w-full py-1 text-xs text-slate-700 focus:outline-none"></input>
                         {/* Search results container */}
                         {input && 
                             <div className="absolute z-50 mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
