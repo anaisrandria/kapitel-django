@@ -14,6 +14,8 @@ function App() {
     const [books, setBooks] = useState([]) // Books in local database
     const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components)
     const [newComment, setNewComment] = useState("")
+    const [isOpen, setIsOpen] = useState(false)
+
 
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
@@ -84,10 +86,10 @@ function App() {
     <div className="relative w-full flex flex-col items-start gap-4">
 
       <BrowserRouter>
-        <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />
+        <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} isOpen={isOpen} setIsOpen={setIsOpen} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
-            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} />} />
+            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} isOpen={isOpen} />} />
             <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} addBook={addBook} />} /> 
             {/* <Route path="/login" />
             <Route path="/register" />
