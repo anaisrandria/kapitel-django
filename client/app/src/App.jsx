@@ -15,6 +15,7 @@ function App() {
     const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components)
     const [newComment, setNewComment] = useState("")
 
+
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`
       const response = await fetch(api_url)

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function SearchResults({ book, setBooks, setClickedBook, addBook }) {
+function SearchResults({ book, setClickedBook, addBook }) {
 
     return (
         <>
@@ -11,7 +11,7 @@ function SearchResults({ book, setBooks, setClickedBook, addBook }) {
                     <p className="text-s">{book.volumeInfo.title}</p>
                     <p className="text-xs">{book.volumeInfo.authors && book.volumeInfo.authors.join(', ')} ({book.volumeInfo.publishedDate && book.volumeInfo.publishedDate.slice(0, 4)})</p>
                     </Link>
-                    <button onClick={() => addBook(book)} className="pt-2 hover:text-amber-700">Ajouter à ma liste de lecture</button>
+                    <button onClick={() => addBook(book)} className="pt-2 hover:text-amber-700">Ajouter</button>
                 </div>
             </div>
         </>
