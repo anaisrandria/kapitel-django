@@ -10,7 +10,7 @@ from rest_framework import status
 from .models import Book
 from .serializer import BookSerializer
 
-#get books from google books api
+# get books from google books api
 # def get_books(request):
 #     api_key = os.getenv('API_KEY')
 #     url = f'https://books.googleapis.com/books/v1/volumes?q=$changer&maxResults=40&langRestrict=fr&printType=books&key={api_key}'
@@ -18,7 +18,7 @@ from .serializer import BookSerializer
 #     data = response.json()
 #     print('🧀 Data is:', data)
 #     return JsonResponse(data)
-    # return render(request, 'books/home.html', {'data': data})
+#     return render(request, 'books/home.html', {'data': data})
 
 @api_view(['GET']) #to define if it is a get request
 def get_books_by_user(request): #define endpoint function)
