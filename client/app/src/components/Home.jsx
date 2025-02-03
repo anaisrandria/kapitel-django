@@ -38,7 +38,7 @@ function Home({ books, setBooks, setClickedBook }) {
             <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={2} title={"Ma liste de lecture"} subtitle={"Les livres que j'ai envie de lire."} />
             <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={3} title={"Mes lectures terminées"} subtitle={"Les livres que j'ai fini de lire."} />
             <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={4} title={"Mes lectures en pause"} subtitle={"Les livres à reprendre plus tard."} />
-            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que je n'ai pas envie de terminer."} />
+            <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que j'ai abandonnés."} />
         </div>
     )
 }

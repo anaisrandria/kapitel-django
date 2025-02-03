@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchResults from './SearchResults';
+import Nav from "./Nav";
 
 function Header({ results, input, handleInput, setBooks, setClickedBook, addBook }) {
 
     return (
-        <div className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
+        // <header className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
+        <header className="sticky top-0 z-10 mx-auto  flex w-full max-w-7xl items-center justify-stretch bg-beige p-[2em]">
             <div id="logo-search-wrapper" className="flex gap-4 w-full">
                 <Link to="/">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -24,13 +26,10 @@ function Header({ results, input, handleInput, setBooks, setClickedBook, addBook
                     }
                 </div>
             </div>
-            <div id="menu" className="flex justify-end gap-4 w-full text-sm">
-                <Link to="http://127.0.0.1:8000/blog/"><p>Fil d'actualité</p></Link>
-                <Link to="#"><p>Ma bibliothèque</p></Link>
-                <Link to="#"><p>Profil</p></Link>
-            </div>
-        </div>
+            <Nav />
+        </header>
     )
 }
 
 export default Header
+
