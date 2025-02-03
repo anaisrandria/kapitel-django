@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import SearchResults from './SearchResults';
 import Nav from "./Nav";
 
-function Header({ results, input, handleInput, setBooks, setClickedBook, addBook, isOpen, setIsOpen }) {
+function Header({ results, input, handleInput, setBooks, setClickedBook, addBook }) {
 
     return (
-        // <header className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
-        <header className="sticky z-10 top-0 mx-auto flex w-full max-w-7xl items-center justify-stretch bg-beige pt-3 pb-6">
+        <header className="sticky z-10 top-0 w-full flex justify-stretch items-center pt-3 pb-6 bg-beige">
+        {/* <header className="sticky z-10 top-0 mx-auto flex w-full max-w-7xl items-center justify-stretch bg-beige pt-3 pb-6"> */}
             <div className="mx-auto flex w-full max-w-7xl items-center justify-stretch bg-beige pt-3 pb-6">
                 <div id="logo-search-wrapper" className="flex gap-4 w-full">
                     <Link to="/">
@@ -19,7 +19,7 @@ function Header({ results, input, handleInput, setBooks, setClickedBook, addBook
                         <input type="text" placeholder="Rechercher un livre..." name="search-bar" onChange={handleInput} className="bg-inherit w-full py-1 text-xs text-slate-700 focus:outline-none"></input>
                         {/* Search results container */}
                         {input && 
-                            <div className="absolute mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
+                            <div className="absolute z-50 mt-2 w-full px-2 bg-white shadow-lg rounded-bl-md rounded-br-md max-h-[60vh] overflow-y-auto text-xs">
                                 {results.items && results.items.map((book, id) => {
                                     return <SearchResults book={book} key={id} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />
                                 })}  
@@ -28,7 +28,7 @@ function Header({ results, input, handleInput, setBooks, setClickedBook, addBook
                     </div>
                 </div>
             </div>
-                <Nav isOpen={isOpen} setIsOpen={setIsOpen} />
+                <Nav />
         </header>
     )
 }

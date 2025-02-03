@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BooksList from "./BooksList";
 
-function Home({ books, setBooks, setClickedBook, isOpen }) {
+const Home = ({ books, setBooks, setClickedBook }) => {
     
     const fetchBooks = async() => {
         try {
@@ -20,8 +20,6 @@ function Home({ books, setBooks, setClickedBook, isOpen }) {
     }, []);
     
     return (
-        <>
-        {!isOpen && 
             <div>
                 <h1 className="text-4xl font-lora mb-4">
                     Hello Anaïs
@@ -42,8 +40,6 @@ function Home({ books, setBooks, setClickedBook, isOpen }) {
                 <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={4} title={"Mes lectures en pause"} subtitle={"Les livres à reprendre plus tard."} />
                 <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que j'ai abandonnés."} />
             </div>
-        }
-        </>
     )
 }
 
