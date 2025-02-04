@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book_id, title, authors, release_year, status, comments }) {
+function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book_id, title, authors, release_year, status, comments, addBook }) {
 
     const deleteBook = async (pk) => {
         try {
@@ -38,12 +38,6 @@ function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book
                     </div>
             </div>
             <p className="truncate">{authors}</p>
-
-            
-            {/* <div id="buttons" className="flex flex-col">
-                <button className="px-2 py-2 rounded-md my-1 border border-amber-700 bg-transparent text-amber-700 hover:bg-amber-700 hover:text-white">Modifier</button>
-                <button onClick={() => deleteBook(book.id)} className="px-2 py-2 my-1 rounded-md border bg-amber-700 text-white">Supprimer</button>
-            </div> */}
         </div>
         </>
     )

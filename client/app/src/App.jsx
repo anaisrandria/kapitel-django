@@ -88,7 +88,7 @@ function App() {
         <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
-            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} />} />
+            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />} />
             <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} addBook={addBook} />} /> 
             {/* <Route path="/login" />
             <Route path="/register" />

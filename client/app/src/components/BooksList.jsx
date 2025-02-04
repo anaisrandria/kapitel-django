@@ -1,6 +1,6 @@
 import BookCard from "./BookCard"
 
-function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle }) {
+function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle, addBook }) {
 
     if (books && books.error) {
         return (
@@ -11,7 +11,10 @@ function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle }
     return (
         <>
         <div className="pt-4 pb-2 w-full border-x-0 border-t-0 border-y border-gray-200 gap-2">
-            <h2 className="text-2xl">{title}</h2>
+            <div className="flex items-baseline justify-between">
+                <h2 className="text-2xl">{title}</h2>
+                <p>0 livres</p>
+            </div>
             <p className="text-xs text-gray-400">{subtitle}</p>
             <div className="mt-8 flex gap-6 w-[80vw] overflow-x-auto">
                 {books && books
@@ -30,6 +33,7 @@ function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle }
                             release_year={book.release_year}
                             status={book.status}
                             comments={book.comments}
+                            addBook={addBook}
                         />
                 )}
             </div>
