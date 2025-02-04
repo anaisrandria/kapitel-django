@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Book = ({ books, setBooks, setClickedBook, clickedBook, addBook }) => {
+const Book = ({ books, setBooks, setClickedBook, clickedBook, addBook, updateStatus }) => {
     
     let params = useParams()
 
@@ -39,11 +39,11 @@ const Book = ({ books, setBooks, setClickedBook, clickedBook, addBook }) => {
                     <div id="dropdown" className="relative inline-block my-2 group">
                         <button id="dropbtn" className="flex flex-col px-3 py-2 rounded-md border bg-amber-700 text-white text-s group-hover:bg-amber-800">Ajouter à ma bibliothèque</button>
                         <div id="dropdown-content" className="hidden absolute z-10 bg-white p-3 text-sm w-full shadow-lg group-hover:block">
-                            <p onClick={() => addBook(clickedBook, 1)} className="block cursor-pointer hover:bg-gray-100">En cours</p>
-                            <p onClick={() => addBook(clickedBook, 2)} className="block cursor-pointer hover:bg-gray-100">À lire</p>
-                            <p onClick={() => addBook(clickedBook, 3)} className="block cursor-pointer hover:bg-gray-100">Terminé</p>
-                            <p onClick={() => addBook(clickedBook, 4)} className="block cursor-pointer hover:bg-gray-100">En pause</p>
-                            <p onClick={() => addBook(clickedBook, 5)} className="block cursor-pointer hover:bg-gray-100">Archivé</p>
+                            <p onClick={() => updateStatus(clickedBook, 1)} className="block cursor-pointer hover:bg-gray-100">En cours</p>
+                            <p onClick={() => updateStatus(clickedBook, 2)} className="block cursor-pointer hover:bg-gray-100">À lire</p>
+                            <p onClick={() => updateStatus(clickedBook, 3)} className="block cursor-pointer hover:bg-gray-100">Terminé</p>
+                            <p onClick={() => updateStatus(clickedBook, 4)} className="block cursor-pointer hover:bg-gray-100">En pause</p>
+                            <p onClick={() => updateStatus(clickedBook, 5)} className="block cursor-pointer hover:bg-gray-100">Archivé</p>
                         </div>
                     </div>
                     <div id="summary" dangerouslySetInnerHTML={createMarkup(clickedBook.volumeInfo.description)} />

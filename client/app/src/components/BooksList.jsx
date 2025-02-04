@@ -1,6 +1,6 @@
 import BookCard from "./BookCard"
 
-function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle, addBook }) {
+function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle, addBook, updateStatus }) {
 
     if (books && books.error) {
         return (
@@ -33,7 +33,9 @@ function BooksList ({ books, setBooks, setClickedBook, status, title, subtitle, 
                             release_year={book.release_year}
                             status={book.status}
                             comments={book.comments}
+                            image_link={book.image_link}
                             addBook={addBook}
+                            updateStatus={updateStatus}
                         />
                 )}
             </div>

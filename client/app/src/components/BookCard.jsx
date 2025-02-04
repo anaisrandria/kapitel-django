@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book_id, title, authors, release_year, status, comments, addBook }) {
+function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book_id, title, authors, release_year, status, comments, image_link, addBook, updateStatus }) {
 
     const deleteBook = async (pk) => {
         try {
@@ -30,8 +30,21 @@ function BookCard({ book, setBooks, clickedBook, setClickedBook, id, google_book
                             </svg>
                         </button>
                         <div id="dropdown-content" className="hidden absolute z-10 bg-white py-2 px-3 w-40 text-sm shadow-lg group-hover:block">
-                            <p onClick={() => addBook(clickedBook, 1)} className="block cursor-pointer hover:bg-gray-50">En cours</p>
-                            <p onClick={() => addBook(clickedBook, 3)} className="block cursor-pointer hover:bg-gray-50">Terminé</p>
+                            {book.status !== 1 &&
+                            <p onClick={() => updateStatus(book.id, book.google_book_id, book.title, book.authors, book.release_year, book.comments, book.image_link, 1)} className="block cursor-pointer hover:bg-gray-50">En cours</p>
+                             }
+                            {book.status !== 2 &&
+                            <p onClick={() => updateStatus(book.id, book.google_book_id, book.title, book.authors, book.release_year, book.comments, book.image_link, 2)} className="block cursor-pointer hover:bg-gray-50">À lire</p>
+                             }
+                            {book.status !== 3 &&
+                            <p onClick={() => updateStatus(book.id, book.google_book_id, book.title, book.authors, book.release_year, book.comments, book.image_link, 3)} className="block cursor-pointer hover:bg-gray-50">Terminé</p>
+                            }
+                            {book.status !== 4 &&
+                            <p onClick={() => updateStatus(book.id, book.google_book_id, book.title, book.authors, book.release_year, book.comments, book.image_link, 4)} className="block cursor-pointer hover:bg-gray-50">En pause</p>
+                            }
+                            {book.status !== 5 &&
+                            <p onClick={() => updateStatus(book.id, book.google_book_id, book.title, book.authors, book.release_year, book.comments, book.image_link, 5)} className="block cursor-pointer hover:bg-gray-50">Archivé</p>
+                            }
                             <p onClick={() => deleteBook(book.id)} className="block cursor-pointer hover:bg-gray-50 text-red-700">Supprimer</p>
 
                         </div>

@@ -14,6 +14,7 @@ function App() {
     const [books, setBooks] = useState([]) // Books in local database
     const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components)
     const [newComment, setNewComment] = useState("")
+    const [newState, setNewState] = useState()
 
 
     const fetchGoogleBooksApi = async() => {
@@ -80,6 +81,41 @@ function App() {
 
     };
 
+    const updateStatus = async(book_id, google_book_id, title, authors, release_year, comments, image_link, status) => {
+        console.log("🍎", book_id, google_book_id, title, authors, release_year, comments, image_link, status)
+
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/books/${book_id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': "application/json",
+                },
+                body: JSON.stringify({
+                    google_book_id: google_book_id,
+                    title: title,
+                    authors: authors,
+                    release_year: release_year,
+                    status: status,
+                    comments: comments,
+                    // current_page: current_page,
+                    // start_date: start_date,
+                    // end_date: end_date,
+                    user: 1,
+                    image_link: image_link
+                })
+            });
+
+            const data = await response.json()
+            console.log("✅ data is:", data)
+
+            // setBooks((prev) => [...prev, data])
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
+
   return (
     // <div className="relative w-full h-screen flex flex-col items-start gap-4">
     <div className="relative w-full flex flex-col items-start gap-4">
@@ -88,8 +124,8 @@ function App() {
         <Header results={results} input={input} handleInput={handleInput} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />
         <div className="flex flex-col w-full h-screen items-start justify-between">
           <Routes>
-            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} />} />
-            <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} addBook={addBook} />} /> 
+            <Route path="/" element={<Home books={books} setBooks={setBooks} setClickedBook={setClickedBook} addBook={addBook} updateStatus={updateStatus} />} />
+            <Route path="/book/:id" element={<Book books={books} setBooks={setBooks} clickedBook={clickedBook} setClickedBook={setClickedBook} addBook={addBook} updateStatus={updateStatus} />} /> 
             {/* <Route path="/login" />
             <Route path="/register" />
             <Route path="/profile/:id" /> */}
