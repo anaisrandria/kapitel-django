@@ -8,16 +8,6 @@ const BooksList = ({ books, setBooks, setClickedBook, status, title, subtitle, u
         )
     }
 
-    let nbBooks = 0
-
-    // const totalBooks = () => {
-        for (let i = 0; i < books.length; i++) {
-            if (status === status) {
-                nbBooks += 1
-            }
-            console.log("🐙", nbBooks)
-        }
-    // }
     
     return (
         <>
@@ -25,7 +15,7 @@ const BooksList = ({ books, setBooks, setClickedBook, status, title, subtitle, u
             <div className="flex items-baseline justify-between gap-2">
                 <h2 className="text-2xl">{title}</h2>
                 <p className="text-sm md:text-base">
-                    {nbBooks} livres
+                    {books && books.filter((book) => book.status == status).length} livres
                 </p>
             </div>
             <p className="text-xs text-gray-400">{subtitle}</p>

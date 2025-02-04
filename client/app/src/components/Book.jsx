@@ -53,7 +53,7 @@ const Book = ({ books, setBooks, setClickedBook, clickedBook, addBook, updateSta
                     </> 
                 }
             </div>
-            <div className="mb-auto">
+            <div className="mb-auto w-full">
                 <Notebook />
             </div>
         </>

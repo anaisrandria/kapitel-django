@@ -26,7 +26,7 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
     }, []);
     
     return (
-            <div>
+            <div className="w-full">
                 <h1 className="text-4xl font-lora mb-4">
                     Hello Anaïs
                 </h1>
