@@ -34,11 +34,11 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
                     </div>
                     </>
                 }
-                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={1} title={"Mes lectures en cours"} subtitle={"Les livres que je suis en train de lire."} addBook={addBook} updateStatus={updateStatus} />
-                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={2} title={"Ma liste de lecture"} subtitle={"Les livres que j'ai envie de lire."} addBook={addBook} updateStatus={updateStatus} />
-                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={3} title={"Mes lectures terminées"} subtitle={"Les livres que j'ai fini de lire."} addBook={addBook} updateStatus={updateStatus} />
-                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={4} title={"Mes lectures en pause"} subtitle={"Les livres à reprendre plus tard."} addBook={addBook} updateStatus={updateStatus} />
-                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que j'ai abandonnés."} addBook={addBook} updateStatus={updateStatus} />
+                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={1} title={"Mes lectures en cours"} subtitle={"Les livres que je suis en train de lire."} updateStatus={updateStatus} />
+                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={2} title={"Ma liste de lecture"} subtitle={"Les livres que j'ai envie de lire."} updateStatus={updateStatus} />
+                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={3} title={"Mes lectures terminées"} subtitle={"Les livres que j'ai fini de lire."} updateStatus={updateStatus} />
+                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={4} title={"Mes lectures en pause"} subtitle={"Les livres à reprendre plus tard."} updateStatus={updateStatus} />
+                <BooksList books={books} setBooks={setBooks} setClickedBook={setClickedBook} status={5} title={"Mes lectures archivées"} subtitle={"Les livres que j'ai abandonnés."} updateStatus={updateStatus} />
             </div>
     )
 }
