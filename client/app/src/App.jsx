@@ -12,10 +12,7 @@ function App() {
     const [input, setInput] = useState("") // Input value
     const [results, setResults] = useState([]) // Results from search bar
     const [books, setBooks] = useState([]) // Books in local database
-    const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components)
-    const [newComment, setNewComment] = useState("")
-    const [newState, setNewState] = useState()
-
+    const [clickedBook, setClickedBook] = useState({}) // Click book's google_book_id (from search results or status components 
 
     const fetchGoogleBooksApi = async() => {
       const api_url = `https://books.googleapis.com/books/v1/volumes?q=${input}&maxResults=40&printType=books&key=${import.meta.env.VITE_API_KEY}`

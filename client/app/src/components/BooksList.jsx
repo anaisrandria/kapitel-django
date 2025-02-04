@@ -24,7 +24,7 @@ const BooksList = ({ books, setBooks, setClickedBook, status, title, subtitle, u
         <div className="pt-4 pb-2 w-full border-x-0 border-t-0 border-y border-gray-200 gap-2">
             <div className="flex items-baseline justify-between gap-2">
                 <h2 className="text-2xl">{title}</h2>
-                <p>
+                <p className="text-sm md:text-base">
                     {nbBooks} livres
                 </p>
             </div>

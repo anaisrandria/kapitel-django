@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import BooksList from "./BooksList";
 
 const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
+
+    const [reading, setReading] = useState([])
+    const [queued, setQueued] = useState([])
+    const [completed, setCompleted] = useState([])
+    const [paused, setPaused] = useState([])
+    const [archived, setArchived] = useState([])
     
     const fetchBooks = async() => {
         try {
