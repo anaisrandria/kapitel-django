@@ -3,11 +3,8 @@ import BooksList from "./BooksList";
 
 const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
 
-    const [reading, setReading] = useState([])
-    const [queued, setQueued] = useState([])
-    const [completed, setCompleted] = useState([])
-    const [paused, setPaused] = useState([])
-    const [archived, setArchived] = useState([])
+    const readingGoal = 20;
+    const remaining = parseInt(readingGoal - (books.filter((book) => book.status === 3).length))
     
     const fetchBooks = async() => {
         try {
@@ -19,6 +16,7 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
         } catch (err) {
             console.log(err);
         }
+        console.log(readingGoal % remaining)
     };
 
     useEffect(() => {
@@ -27,9 +25,10 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
     
     return (
             <div className="w-full">
-                <h1 className="text-4xl font-lora mb-4">
-                    Hello Anaïs
-                </h1>
+                <div id="top" className="md:flex items-baseline justify-between">
+                    <h1 className="text-4xl font-lora mb-4">Hello Anaïs</h1>
+                    <p className="font-bold">Objectif {(new Date()).getFullYear()} : {books && books.filter((book) => book.status === 3).length} / {readingGoal} {books.length !== 0 ? `(${readingGoal % remaining} livres restants)` : ''} </p>
+                </div>
                 {books.length == 0 && 
                     <>
                     <div className="flex flex-col items-center py-6">
