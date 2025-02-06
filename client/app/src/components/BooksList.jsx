@@ -15,7 +15,7 @@ const BooksList = ({ books, setBooks, setClickedBook, status, title, subtitle, u
             <div className="flex items-baseline justify-between gap-2">
                 <h2 className="text-lg md:text-2xl">{title}</h2>
                 <p className="text-sm md:text-base">
-                    {books && books.filter((book) => book.status == status).length} livres
+                    {books && books.filter((book) => book.status == status).length} {books && books.filter((book) => book.status == status).length <= 1 ? "livre" : "livres"}
                 </p>
             </div>
             <p className="text-xs text-gray-400">{subtitle}</p>

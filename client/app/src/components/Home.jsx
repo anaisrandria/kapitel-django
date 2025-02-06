@@ -4,7 +4,8 @@ import BooksList from "./BooksList";
 const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
 
     const readingGoal = 20;
-    const remaining = parseInt(readingGoal - (books.filter((book) => book.status === 3).length))
+
+    // const remaining = parseInt(readingGoal - (books.filter((book) => book.status === 3).length))
     
     const fetchBooks = async() => {
         try {
@@ -16,7 +17,7 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
         } catch (err) {
             console.log(err);
         }
-        console.log(readingGoal % remaining)
+        console.log(remaining)
     };
 
     useEffect(() => {
@@ -27,7 +28,8 @@ const Home = ({ books, setBooks, setClickedBook, addBook, updateStatus }) => {
             <div className="w-full">
                 <div id="top" className="md:flex items-baseline justify-between">
                     <h1 className="text-4xl font-lora mb-4">Hello Anaïs</h1>
-                    <p className="font-bold">Objectif {(new Date()).getFullYear()} : {books && books.filter((book) => book.status === 3).length} / {readingGoal} {books.length !== 0 ? `(${readingGoal % remaining} livres restants)` : ''} </p>
+                    {/* <p className="font-bold">Objectif {(new Date()).getFullYear()} : {books && books.filter((book) => book.status === 3).length} / {readingGoal} {books.length !== 0 ? `(${readingGoal - (books.filter((book) => book.status === 3).length)} livres restants)` : ''} </p> */}
+                    <p className="font-bold">Objectif {(new Date()).getFullYear()} : {books && books.filter((book) => book.status === 3).length} / {readingGoal} livres terminés</p>
                 </div>
                 {books.length == 0 && 
                     <>
