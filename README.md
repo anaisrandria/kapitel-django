@@ -13,10 +13,10 @@ application web permettant aux utilisateurs de rechercher, stocker et organiser 
   - API externe : Google Books API
 
 ## Fonctionnalités actuelles :
-✅ Recherche de livres via l'API Google Books
-✅ Enregistrement des livres dans la base de données
-✅ Affichage des livres enregistrés avec leurs informations
-✅ Gestion CRUD (création et suppression, modification en cours)
+    - ✅ Recherche de livres via l'API Google Books
+    - ✅ Enregistrement des livres dans la base de données
+    - ✅ Affichage des livres enregistrés avec leurs informations
+    - ✅ Gestion CRUD (création et suppression, modification en cours)
 
 ## Améliorations : 
 - Authentification et gestion des utilisateurs
